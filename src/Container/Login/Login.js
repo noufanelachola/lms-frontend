@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Login.css";
 import logo1 from "./logo1.png";
 
-function Login() {
+function Login({routeChange}) {
   
   const [user,setUser] = useState({
     userName:"",
@@ -39,6 +39,9 @@ function Login() {
       ...prevState,
       password: ""
     }));
+
+    routeChange("home");
+
   }
   
     return (
