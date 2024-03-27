@@ -37,7 +37,7 @@
     font-weight: 600;
     font-size: 1.25rem;
     color: #533000;
-    background-image: linear-gradient(to bottom right, #E8B500 , #FF7A00);
+    background-image: linear-gradient(to bottom right, var(--clr-yellow-light) , var(--clr-yellow-dark));
 }
 .loginBtn:hover {
     scale: 1.01;
