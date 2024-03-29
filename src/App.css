@@ -1,10 +1,15 @@
 :root {
   --clr-primary-blue-dark: #012FB0;
   --clr-primary-blue-light: #013CDF;
+  --clr-primary-blue-extralight: #E5ECFF;
   
   --clr-yellow-light: #E8B500;
   --clr-yellow-dark: #FF7A00;
   
+  --clr-red: #FF0000;
+  
+  --clr-green: #00E282;
+
 }
 
 

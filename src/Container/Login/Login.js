@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Login.css";
-import logo1 from "./logo1.png";
+import logo1 from "../resources/logo1.png";
 
 function Login({routeChange}) {
   

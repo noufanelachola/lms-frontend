@@ -1,0 +1,77 @@
+.dashBoard {
+    background-color: rgb(255, 255, 255);
+    min-width: 10rem;
+    width: 15%;
+    padding: 1rem;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); 
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-grow: 1;
+}
+
+.dashIcon {
+    width: 8rem;
+}
+
+.dashCont1{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.iconBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border: 0;
+    background-color: rgb(243, 243, 243);
+    border-radius: 0.35rem;
+}
+.iconBtn:hover {
+    background-color: var(--clr-primary-blue-extralight);
+}
+
+.icon {
+    height: 1.25rem;
+}
+
+.iconText{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.dashCont2 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: auto;
+}
+
+.dashCont2 div {
+    display: flex;
+    flex-direction: column;
+}
+.dashCont2 div a {
+    line-height: 1.2rem;
+    color: black;
+}
+
+.dashBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border: 0;
+    border-radius: 0.35rem;
+}
+
+.dashCont2 > :nth-child(2) {
+    background-color: var(--clr-green);
+}
+.dashCont2 > :last-child {
+    background-color: var(--clr-red);
+}
