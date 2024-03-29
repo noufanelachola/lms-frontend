@@ -1,8 +1,10 @@
+import React from 'react';
 import { useState } from 'react';
+
 import Login from './Container/Login/Login';
+import DashBoard from './Container/DashBoard';
 
 import './App.css';
-import React from 'react';
 
 function App() {
   const [route,setRoute] = useState("logIn");
@@ -14,7 +16,8 @@ function App() {
 
   return (
     <div className="App">
-      <Login routeChange={routeChange} />
+      {/* <Login routeChange={routeChange} /> */}
+      <DashBoard/>
     </div>
   );
 }
