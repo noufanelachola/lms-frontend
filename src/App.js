@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import Login from './Container/Login/Login';
 import DashBoard from './Container/DashBoard';
-
+import Home from './Container/Home/Home';
 import './App.css';
 
 function App() {
@@ -16,8 +16,15 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Login routeChange={routeChange} /> */}
-      <DashBoard/>
+      {
+        route === "logIn" ? 
+        <Login routeChange={routeChange}/> :
+        <div className="appDashBoard">
+            <DashBoard/>
+            <Home/>
+          </div> 
+      }
+
     </div>
   );
 }
