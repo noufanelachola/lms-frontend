@@ -40,7 +40,7 @@ function Login({routeChange}) {
       password: ""
     }));
 
-    routeChange("dashBoard");
+    routeChange("home");
 
   }
   
