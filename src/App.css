@@ -9,7 +9,8 @@
   --clr-red: #FF0000;
   
   --clr-green: #00E282;
-
+  
+  --clr-brown: #533000;
 }
 
 
@@ -26,12 +27,19 @@
 }
 
 /* Text */
+.poppins {
+  font-family: "Poppins",sans-serif;
+}
+
 .strongText {
   font-weight: 700;
 }
 
 .title{
   font-size: 90px;
+}
+.subTitle{
+  font-size: 60px;
 }
 
 
@@ -43,4 +51,12 @@
 
 .logo {
   cursor: pointer;
+}
+
+
+/* ______ */
+
+.appDashBoard {
+  display: flex;
+  /* flex-direction: row; */
 }
