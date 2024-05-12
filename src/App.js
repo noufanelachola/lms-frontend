@@ -20,7 +20,7 @@ function App() {
         route === "logIn" ? 
         <Login routeChange={routeChange}/> :
         <div className="appDashBoard">
-            <DashBoard/>
+            <DashBoard route={route} />
             <Home/>
           </div> 
       }

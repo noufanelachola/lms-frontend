@@ -5,16 +5,16 @@ import iconSearch from "./resources/icon-search.png";
 
 import "./DashBoard.css";
 
-function DashBoard () {
+function DashBoard ({route}) {
     return(
         <div className='window dashBoard'>
             <img src={logo2} alt='Noof logo' className='logo dashIcon'/>
             <div className='dashCont1'>
-                <button className="iconBtn btn">
+                <button className={`iconBtn btn ${route =="home"?"hovered":""}`}>
                     <img src={iconHome} className="icon" />
                     <p className="iconText">Home</p>
                 </button>
-                <button className="iconBtn btn">
+                <button className={`iconBtn btn ${route =="search"?"hovered":""}`}>
                     <img src={iconSearch} className="icon" />
                     <p className="iconText">Search</p>
                 </button>

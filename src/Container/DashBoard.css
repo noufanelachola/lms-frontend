@@ -29,6 +29,10 @@
     background-color: rgb(243, 243, 243);
     border-radius: 0.35rem;
 }
+.hovered {
+    background-color: var(--clr-primary-blue-extralight);
+}
+
 .iconBtn:hover {
     background-color: var(--clr-primary-blue-extralight);
 }

@@ -9,6 +9,7 @@
   --clr-red: #FF0000;
   
   --clr-green: #00E282;
+  --clr-green-dark: #009E5B;
   
   --clr-brown: #533000;
 }
@@ -21,9 +22,13 @@
 .black{
   color: black;
 }
+.green{
+  color: var(--clr-green-dark);
+}
 
 .window {
   height: 100vh;
+  overflow-y: auto;
 }
 
 /* Text */
@@ -34,14 +39,24 @@
 .strongText {
   font-weight: 700;
 }
+.strong {
+  font-weight: 700;
+}
+.medium {
+  font-weight: 500;
+}
 
 .title{
   font-size: 90px;
 }
 .subTitle{
-  font-size: 60px;
+  font-size: 2.5rem;
 }
 
+
+.smallLineHeight{
+  line-height: 2rem;
+}
 
 /* Buttons */
 .btn {
