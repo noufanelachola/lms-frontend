@@ -1,7 +1,8 @@
 import React from "react";
 import "./Home.css";
 
-function Home() {
+function Home({account}) {
+
     return (
         <div className="home window">
 
@@ -24,7 +25,7 @@ function Home() {
                 </div>
             </div>
 
-            <div className="homeCont2">
+            <div className="homeCont2 homeCont">
                 <div className="homeTableHeader">
                     <p className="medium subTitle smallLineHeight">To Return</p>
                     <p><span className="strong green smallLineHeight">112</span> Students have taken books...</p>
@@ -49,7 +50,7 @@ function Home() {
                             <td>24-05-2024</td>
                             <td>Pending</td>
                             <td>50</td>
-                            <td><button>Mark as receivered</button></td>
+                            <td><button className="btn" >Mark as receivered</button></td>
                         </tr>
                         <tr>
                             <td>Aman Elachola</td>
@@ -58,7 +59,7 @@ function Home() {
                             <td>04-05-2024</td>
                             <td>Pending</td>
                             <td>5</td>
-                            <td><button>Mark as receivered</button></td>
+                            <td><button className="btn" >Mark as receivered</button></td>
                         </tr>
                         <tr>
                             <td>Noufan Elachola</td>
@@ -67,7 +68,7 @@ function Home() {
                             <td>24-05-2024</td>
                             <td>Pending</td>
                             <td>50</td>
-                            <td><button>Mark as receivered</button></td>
+                            <td><button className="btn" >Mark as receivered</button></td>
                         </tr>
                         <tr>
                             <td>Aman Elachola</td>
@@ -76,16 +77,61 @@ function Home() {
                             <td>04-05-2024</td>
                             <td>Pending</td>
                             <td>5</td>
-                            <td><button>Mark as receivered</button></td>
+                            <td><button className="btn" >Mark as receivered</button></td>
+                        </tr>
+                        <tr>
+                            <td>Noufan Elachola</td>
+                            <td>10-C</td>
+                            <td>23GCS16</td>
+                            <td>24-05-2024</td>
+                            <td>Pending</td>
+                            <td>50</td>
+                            <td><button className="btn" >Mark as receivered</button></td>
+                        </tr>
+                        <tr>
+                            <td>Aman Elachola</td>
+                            <td>9-C</td>
+                            <td>23GCS156</td>
+                            <td>04-05-2024</td>
+                            <td>Pending</td>
+                            <td>5</td>
+                            <td><button className="btn" >Mark as receivered</button></td>
+                        </tr>
+                        <tr>
+                            <td>Noufan Elachola</td>
+                            <td>10-C</td>
+                            <td>23GCS16</td>
+                            <td>24-05-2024</td>
+                            <td>Pending</td>
+                            <td>50</td>
+                            <td><button className="btn" >Mark as receivered</button></td>
+                        </tr>
+                        <tr>
+                            <td>Aman Elachola</td>
+                            <td>9-C</td>
+                            <td>23GCS156</td>
+                            <td>04-05-2024</td>
+                            <td>Pending</td>
+                            <td>5</td>
+                            <td><button className="btn" >Mark as receivered</button></td>
+                        </tr>
+                        <tr>
+                            <td>Noufan Elachola</td>
+                            <td>10-C</td>
+                            <td>23GCS16</td>
+                            <td>24-05-2024</td>
+                            <td>Pending</td>
+                            <td>50</td>
+                            <td><button className="btn" >Mark as receivered</button></td>
                         </tr>
                     </tbody>    
                 </table>
             </div>
 
-            <div className="homeCont3">
+            <div className="homeCont3 homeCont">
                 <div className="homeTableHeader">
                     <p className="medium subTitle smallLineHeight">Your Plan</p>
-                    <p><span className="strong green smallLineHeight">112</span> Students have taken books...</p>
+                    <p><span className="strong green smallLineHeight">{account.doe}</span> Students have taken books...</p>
                 </div>
                 <table className="returnTable">
                     <thead>
@@ -100,12 +146,12 @@ function Home() {
                     </thead>    
                     <tbody>
                         <tr>
-                            <td>Ma'din Public School</td>
-                            <td>24-25-2024</td>
-                            <td>25-05-2026</td>
-                            <td>Active</td>
-                            <td>#00235</td>
-                            <td><button>Cancel</button></td>
+                            <td>{account.schoolName}</td>
+                            <td>{account.dop}</td>
+                            <td>{account.doe}</td>
+                            <td>{account.status}</td>
+                            <td>{account.schoolId}</td>
+                            <td><button className="btn" >Cancel</button></td>
                         </tr>
                     </tbody>    
                 </table>
