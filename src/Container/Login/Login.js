@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Login.css";
 import logo1 from "../resources/logo1.png";
 
-function Login({routeChange}) {
+function Login({routeChange,updateAccount}) {
   
   const [user,setUser] = useState({
     userName:"",
@@ -33,14 +33,16 @@ function Login({routeChange}) {
                 password : user.password
               })
     }).then(response => response.json())
-    .then(res => console.log(res));
+    .then(res => {
+      updateAccount(res);
+      setUser(prevState => ({
+        ...prevState,
+        password: ""
+      }));
+      
+      routeChange("home");
+    });
 
-    setUser(prevState => ({
-      ...prevState,
-      password: ""
-    }));
-
-    routeChange("home");
 
   }
   
