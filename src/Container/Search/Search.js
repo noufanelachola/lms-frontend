@@ -1,7 +1,11 @@
 
 function Search(){
     return(
-        <h1>askdhkdsnf</h1>
+        <div className="search">
+            <div className="searchCont">
+                    
+            </div> 
+        </div>
     );
 }
 
