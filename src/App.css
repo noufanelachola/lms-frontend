@@ -28,6 +28,7 @@
 
 .window {
   height: 100vh;
+  overflow: auto;
 }
 
 /* Text */
