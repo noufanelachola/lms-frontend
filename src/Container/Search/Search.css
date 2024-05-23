@@ -6,3 +6,38 @@
     gap: 1rem;
     background-color: #F9F9FB;
 }
+
+
+
+.searchFilter {
+    position: relative;
+    display: inline-block;
+    border: 0.1rem solid rgba(39, 39, 39, 0.548);
+    border-radius: 0.5rem;
+    text-align: center;
+    z-index: 2;
+}
+.searchFilterBtn {
+    position: relative;
+    padding: 0.5rem 0;
+    width: 6.25rem;
+    display: inline-block;
+    z-index: 3;
+    transition: color 0.5s ease-in-out ;
+}
+.searchFilterBtn.active {
+    color: white;
+}
+.searchFilterSlider {
+    position: absolute;
+    top: 0;
+    width: 6.25rem;
+    height: 100%;
+    z-index: 2;
+    background-color: var(--clr-primary-blue-light);
+    border-radius: 0.5rem;
+    transition: transform 0.5s ease-in-out;
+}
+.searchFilterSlider.active {
+    transform: translateX(100%);
+}

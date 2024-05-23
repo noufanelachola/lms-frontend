@@ -10,11 +10,11 @@ function DashBoard ({route,routeChange}) {
         <div className='window dashBoard'>
             <img src={logo2} alt='Noof logo' className='logo dashIcon'/>
             <div className='dashCont1'>
-                <button className={`iconBtn btn ${route =="home"?"hovered":""}`} onClick={() => routeChange("home")} >
+                <button className={`iconBtn btn ${route ==="home"?"hovered":""}`} onClick={() => routeChange("home")} >
                     <img src={iconHome} className="icon" />
                     <p className="iconText">Home</p>
                 </button>
-                <button className={`iconBtn btn ${route =="search"?"hovered":""}`} onClick={() => routeChange("search")} >
+                <button className={`iconBtn btn ${route ==="search"?"hovered":""}`} onClick={() => routeChange("search")} >
                     <img src={iconSearch} className="icon" />
                     <p className="iconText">Search</p>
                 </button>
