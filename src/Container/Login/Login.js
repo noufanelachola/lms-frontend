@@ -34,14 +34,15 @@ function Login({routeChange,updateAccount}) {
               })
     }).then(response => response.json())
     .then(res => {
-      updateAccount(res);
-      setUser(prevState => ({
-        ...prevState,
-        password: ""
-      }));
-      
-      routeChange("home");
-    });
+      if(res.is_active){
+        updateAccount(res);
+        setUser(prevState => ({
+          ...prevState,
+          password: ""
+        }));
+        routeChange("home");
+      }
+    }).catch(error => console.error("Error: ",error));
 
 
   }
