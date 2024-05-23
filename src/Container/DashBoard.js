@@ -5,7 +5,8 @@ import iconSearch from "./resources/icon-search.png";
 
 import "./DashBoard.css";
 
-function DashBoard ({route,routeChange}) {
+function DashBoard ({route,routeChange,signOut}) {
+
     return(
         <div className='window dashBoard'>
             <img src={logo2} alt='Noof logo' className='logo dashIcon'/>
@@ -27,7 +28,7 @@ function DashBoard ({route,routeChange}) {
                 <button className="dashBtn btn">
                     <p className="iconText">Assign a New Book</p>
                 </button>
-                <button className="dashBtn btn">
+                <button className="dashBtn btn" onClick={()=>signOut()} >
                     <p className="iconText">Sign Out</p>
                 </button>
             </div>

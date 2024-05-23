@@ -40,13 +40,30 @@ function App() {
     }));
   }
 
+  const signOut = () => {
+    setAccount(
+      {
+        schoolName : "",
+        dop : "",
+        doe : "",
+        status : "",
+        schoolId : "",
+        totalBooks : 0,
+        stockBooks : 0,
+        totalStudents : 0,
+        withBooks : 0
+      }
+    );
+    routeChange("logIn");
+  }
+
   return (
     <div className="App">
       {
         route === "logIn" ? 
         <Login routeChange={routeChange} updateAccount={updateAccount} /> :
         <div className="appDashBoard">
-            <DashBoard route={route} routeChange={routeChange} />
+            <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
             {route === "home" && <Home account={account}/>}
             {route === "search" && <Search/>}
           </div> 
