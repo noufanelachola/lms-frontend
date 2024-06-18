@@ -5,6 +5,8 @@ import Login from './Container/Login/Login';
 import DashBoard from './Container/DashBoard';
 import Home from './Container/Home/Home';
 import Search from './Container/Search/Search';
+import AddStudent from './Container/AddStudent/AddStudent';
+
 import './App.css';
 
 function App() {
@@ -66,6 +68,7 @@ function App() {
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
             {route === "home" && <Home account={account}/>}
             {route === "search" && <Search/>}
+            {route === "addStudent" && <AddStudent/>}
           </div> 
       }
 
