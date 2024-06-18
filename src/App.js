@@ -68,7 +68,7 @@ function App() {
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
             {route === "home" && <Home account={account}/>}
             {route === "search" && <Search/>}
-            {route === "addStudent" && <AddStudent/>}
+            {route === "addStudent" && <AddStudent schoolId={account.schoolId}/>}
           </div> 
       }
 

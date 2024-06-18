@@ -9,7 +9,7 @@ import "./DashBoard.css";
 function DashBoard ({route,routeChange,signOut}) {
 
     return(
-        <div className='window dashBoard'>
+        <div className='dashBoard'>
             <img src={logo2} alt='Noof logo' className='logo dashIcon'/>
             <div className='dashCont1'>
                 <button className={`iconBtn btn ${route ==="home"?"hovered":""}`} onClick={() => routeChange("home")} >
