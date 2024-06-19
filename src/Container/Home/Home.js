@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 
-function Home({account}) {
+function Home({account,totalStudents}) {
 
     return (
         <div className="window home">
@@ -17,7 +17,7 @@ function Home({account}) {
                 </div>
                 <div className="counts">
                     <p className="text">Total Students</p>
-                    <p className="number smallLineHeight">1500</p>
+                    <p className="number smallLineHeight">{`${totalStudents}`}</p>
                 </div>
                 <div className="counts">
                     <p className="text">With Books</p>
