@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 import Login from './Container/Login/Login';
 import DashBoard from './Container/DashBoard';
@@ -28,11 +28,9 @@ function App() {
 
   const routeChange = (rout) => {
     setRoute(rout);
-    console.log(route);
   }
 
   const updateAccount = (school) => {
-    console.log(school);
     setAccount(prevState => ({
       ...prevState,
       schoolName : school.school_name,
@@ -40,8 +38,7 @@ function App() {
       doe : school.end_date,
       status : school.is_active ? "Active" : "Not Active",
       schoolId : school.id
-    }));
-    updateStudentsCount();
+    })); 
   }
 
   const signOut = () => {
@@ -60,9 +57,15 @@ function App() {
     );
     routeChange("logIn");
   }
+  
+  useEffect(() => {
+    if(account.schoolId){
+      updateStudentsCount(account.schoolId);
+    }
+  },[account.schoolId]);
 
-  const updateStudentsCount = () => {
-    fetch("http://localhost:3000/student/count")
+  const updateStudentsCount = (id) => {
+    fetch(`http://localhost:3000/student/count?schoolId=${id}`)
     .then(res => res.json())
     .then(count => {
       setAccount(prevState => ({
