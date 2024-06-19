@@ -6,6 +6,7 @@ import DashBoard from './Container/DashBoard';
 import Home from './Container/Home/Home';
 import Search from './Container/Search/Search';
 import AddStudent from './Container/AddStudent/AddStudent';
+import AddBook from './Container/AddBook/AddBook';
 
 import './App.css';
 
@@ -69,6 +70,7 @@ function App() {
             {route === "home" && <Home account={account}/>}
             {route === "search" && <Search/>}
             {route === "addStudent" && <AddStudent schoolId={account.schoolId}/>}
+            {route === "addBook" && <AddBook schoolId={account.schoolId}/>}
           </div> 
       }
 

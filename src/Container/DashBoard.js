@@ -2,7 +2,7 @@ import logo2 from "./resources/logo2.png";
 import iconHome from "./resources/icon-home.png";
 import iconSearch from "./resources/icon-search.png";
 import iconAddStudent from "./resources/icon-addBook.png";
-// import iconHome from "./resources/icon-home.png";
+import iconAddBook from "./resources/icon-book.png";
 
 import "./DashBoard.css";
 
@@ -23,6 +23,10 @@ function DashBoard ({route,routeChange,signOut}) {
                 <button className={`iconBtn btn ${route ==="addStudent"?"hovered":""}`} onClick={() => routeChange("addStudent")} >
                     <img src={iconAddStudent} className="icon" />
                     <p className="iconText">Add Student</p>
+                </button>
+                <button className={`iconBtn btn ${route ==="addBook"?"hovered":""}`} onClick={() => routeChange("addBook")} >
+                    <img src={iconAddBook} className="icon" />
+                    <p className="iconText">Add Book</p>
                 </button>
             </div>
             <div className='dashCont2'>
