@@ -41,6 +41,7 @@ function App() {
       status : school.is_active ? "Active" : "Not Active",
       schoolId : school.id
     }));
+    updateStudentsCount();
   }
 
   const signOut = () => {
@@ -60,6 +61,19 @@ function App() {
     routeChange("logIn");
   }
 
+  const updateStudentsCount = () => {
+    fetch("http://localhost:3000/student/count")
+    .then(res => res.json())
+    .then(count => {
+      setAccount(prevState => ({
+        ...prevState,
+        totalStudents : count
+      }));
+    }).catch(error => console.log("error occured"));
+
+  }
+
+
   return (
     <div className="App">
       {
@@ -67,7 +81,7 @@ function App() {
         <Login routeChange={routeChange} updateAccount={updateAccount} /> :
         <div className="appDashBoard">
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
-            {route === "home" && <Home account={account}/>}
+            {route === "home" && <Home account={account} totalStudents={account.totalStudents} />}
             {route === "search" && <Search/>}
             {route === "addStudent" && <AddStudent schoolId={account.schoolId}/>}
             {route === "addBook" && <AddBook schoolId={account.schoolId}/>}
