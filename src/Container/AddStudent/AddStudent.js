@@ -1,7 +1,7 @@
 import {React,useState} from "react";
 import "./AddStudent.css";
 
-function AddStudent ({schoolId}) {
+function AddStudent ({schoolId,totalStudents,updateStudentsCount}) {
 
     const [student,setStudent] = useState({
         name : "",
@@ -41,6 +41,7 @@ function AddStudent ({schoolId}) {
               .then(res => {
                 res.studentid ? alert("Student added seccessfully") : alert("Error while adding student");
                 studentClear();
+                updateStudentsCount();
               })
               .catch(error => console.error("Error: ",error));
         }
@@ -53,7 +54,7 @@ function AddStudent ({schoolId}) {
     return(
         <div className="window addStudent">
             <p className="subTitle">Add Students</p>
-            <p>{`Total Students - 1500`}</p>
+            <p>{`Total Students - ${totalStudents}`}</p>
             <div className="inputContainer">
                 <input id="name" placeholder="Enter student's name here" onChange={(event)=>studentChange(event)} value={student.name}/>
                 <input id="class" placeholder="Class (eg:10-C,5-B)" onChange={(event)=>studentChange(event)} value={student.class}/>

@@ -60,12 +60,12 @@ function App() {
   
   useEffect(() => {
     if(account.schoolId){
-      updateStudentsCount(account.schoolId);
+      updateStudentsCount();
     }
   },[account.schoolId]);
 
-  const updateStudentsCount = (id) => {
-    fetch(`http://localhost:3000/student/count?schoolId=${id}`)
+  const updateStudentsCount = () => {
+    fetch(`http://localhost:3000/student/count?schoolId=${account.schoolId}`)
     .then(res => res.json())
     .then(count => {
       setAccount(prevState => ({
@@ -86,7 +86,7 @@ function App() {
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
             {route === "home" && <Home account={account} totalStudents={account.totalStudents} />}
             {route === "search" && <Search/>}
-            {route === "addStudent" && <AddStudent schoolId={account.schoolId}/>}
+            {route === "addStudent" && <AddStudent schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
             {route === "addBook" && <AddBook schoolId={account.schoolId}/>}
           </div> 
       }
