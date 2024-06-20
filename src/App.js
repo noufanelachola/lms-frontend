@@ -112,7 +112,7 @@ function App() {
         <div className="appDashBoard">
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
             {route === "home" && <Home account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} />}
-            {route === "search" && <Search/>}
+            {route === "search" && <Search schoolId={account.schoolId} />}
             {route === "addStudent" && <AddStudent schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
             {route === "addBook" && <AddBook schoolId={account.schoolId} totalBooks={account.totalBooks} updateBooksCount={updateBooksCount} />}
           </div> 

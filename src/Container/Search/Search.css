@@ -73,7 +73,23 @@
 
 
 .searchContainer{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.5rem;
+    /* height: 100%; */
+    overflow-y: auto;
+}
+.searchContainer::-webkit-scrollbar {
+    width: 0.25rem;
+    height: 0.5rem;
+}
+.searchContainer::-webkit-scrollbar-thumb {
+    border-radius: 0.5rem;
+    background-color: rgb(189, 189, 189);
+    visibility: hidden;
+}
+.searchContainer:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
 }
 .searchItem {
     display: flex;
@@ -81,15 +97,16 @@
     align-items: center;
     border: black 0.1rem solid;
     border-radius: 1rem;
-    overflow: hidden;
-    /* min-height: 20rem; */
 }
 .searchItem > img {
     width: 100%;
+    border-radius: 1rem 1rem 0rem 0rem;
 }
 .searchItemSection {
     padding: 0.5rem;
     background-color: var(--clr-primary-blue-light);
+    width: 100%;
+    border-radius: 0rem 0rem 0.9rem 0.9rem;
 }
 .searchItemBtn {
     background-color: white;
