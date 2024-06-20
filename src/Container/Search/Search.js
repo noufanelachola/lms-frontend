@@ -1,15 +1,21 @@
-import {useState} from "react";
+import {useState,useEffect} from "react";
+
+import ProfileCard from "./ProfileCard";
 
 import iconSearch from "../resources/searchLogo.png";
-import profileMale from "../resources/profile-male.png";
-import profileBook from "../resources/book.png";
+
 
 import "./Search.css";
 
-function Search(){
+function Search({schoolId}){
 
     const [filter,setFilter] = useState("student");
     const [search,setSearch] = useState("");
+    const [students,setStudents] = useState([]);
+    
+    useEffect(() => {
+        getStudents();
+    },[]);
 
     const filterChange = (sort) => {
         setFilter(sort);
@@ -18,6 +24,16 @@ function Search(){
     const onSearchInputChange = (event) => {
         setSearch(event.target.value);
     }
+
+    const getStudents = () => {
+        fetch(`http://localhost:3000/student/get?schoolId=${schoolId}`)
+        .then(response => response.json())
+        .then(students => {
+            setStudents(students);
+        })
+        .catch(error => console.log(error , "Error fetching students"));
+    }
+
 
     return(
         <div className="search window">
@@ -41,22 +57,23 @@ function Search(){
                 </div>
                 
                 {search && <p className="medText">{`5 Results with "${search}"`}</p>}
-
-                <div className="searchContainer">
-                    <div className="searchItem">
-                        <img src={filter === "student" ? profileMale : profileBook} alt="profile" />
-                        <div className="searchItemSection ">
-                            <p className="white">Noufan Elachola</p>
-                            <p className="white">{`Admission : 23GCS16 | 10-C`}</p>
-                            <p className="white">{`Taken 25 books before`}</p>
-                            <div className="btn searchItemBtn">
-                                <p className="medium">View Details</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
             </div>
+            
+            <div className="searchContainer">
+                {students.map(student => {
+                    return(
+                        <ProfileCard 
+                            filter={filter} 
+                            key={student.studentid} 
+                            id={student.studentid} 
+                            name={student.studentname}
+                            stClas={student.studentclass}
+                            admissionNumber={student.admissionnumber}
+                        />
+                    )
+                })}    
+            </div>
+
         </div>
     );
 }
