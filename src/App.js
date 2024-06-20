@@ -61,6 +61,7 @@ function App() {
   useEffect(() => {
     if(account.schoolId){
       updateStudentsCount();
+      updateBooksCount();
     }
   },[account.schoolId]);
 
@@ -76,6 +77,32 @@ function App() {
 
   }
 
+  const updateBooksCount = () => {
+    updateBookTotalCount();
+    updateBookStockCount();
+  }
+
+  const updateBookTotalCount = () => {
+    fetch(`http://localhost:3000/book/totalcount?schoolId=${account.schoolId}`)
+    .then(res => res.json())
+    .then(count => {
+      setAccount(prevState => ({
+        ...prevState,
+        totalBooks : count === null ? "0" : count
+      }));
+    }).catch(error => console.log("error occured while total count books"));
+  }
+  
+  const updateBookStockCount = () => {
+    fetch(`http://localhost:3000/book/stockcount?schoolId=${account.schoolId}`)
+    .then(res => res.json())
+    .then(count => {
+      setAccount(prevState => ({
+        ...prevState,
+        stockBooks : count === null ? "0" : count
+      }));
+    }).catch(error => console.log("error occured while stock count books"));
+  }
 
   return (
     <div className="App">
@@ -84,10 +111,10 @@ function App() {
         <Login routeChange={routeChange} updateAccount={updateAccount} /> :
         <div className="appDashBoard">
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
-            {route === "home" && <Home account={account} totalStudents={account.totalStudents} />}
+            {route === "home" && <Home account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} />}
             {route === "search" && <Search/>}
             {route === "addStudent" && <AddStudent schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
-            {route === "addBook" && <AddBook schoolId={account.schoolId}/>}
+            {route === "addBook" && <AddBook schoolId={account.schoolId} totalBooks={account.totalBooks} updateBooksCount={updateBooksCount} />}
           </div> 
       }
 
