@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 
-function Home({account,totalStudents}) {
+function Home({account,totalStudents,totalBooks,stockBooks}) {
 
     return (
         <div className="window home">
@@ -9,15 +9,15 @@ function Home({account,totalStudents}) {
             <div className="homeCont1">
                 <div className="counts">
                     <p className="text smallLineHeight">Total books</p>
-                    <p className="number smallLineHeight">1500</p>
+                    <p className="number smallLineHeight">{totalBooks}</p>
                 </div>
                 <div className="counts">
                     <p className="text">In Stock</p>
-                    <p className="number smallLineHeight">1500</p>
+                    <p className="number smallLineHeight">{stockBooks}</p>
                 </div>
                 <div className="counts">
                     <p className="text">Total Students</p>
-                    <p className="number smallLineHeight">{`${totalStudents}`}</p>
+                    <p className="number smallLineHeight">{totalStudents}</p>
                 </div>
                 <div className="counts">
                     <p className="text">With Books</p>

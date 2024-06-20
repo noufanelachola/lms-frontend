@@ -1,7 +1,7 @@
 import {React,useState} from "react";
 import "./AddBook.css";
 
-function AddBook({schoolId}) {
+function AddBook({schoolId,totalBooks,updateBooksCount}) {
 
     const [book,setBook] = useState({
         bookName : "",
@@ -41,6 +41,7 @@ function AddBook({schoolId}) {
             .then(res => {
                 res.bookid ? alert("Book added successfully") : alert("Error while adding book");
                 bookClear();
+                updateBooksCount();
             }).catch(error => {
                 alert("Error while adding student");
                 console.log(error);
@@ -53,7 +54,7 @@ function AddBook({schoolId}) {
     return(
         <div className="window addBook">
             <p className="subTitle">Add Books</p>
-            <p>{`Total Books - 1500`}</p>
+            <p>{`Total Books - ${totalBooks}`}</p>
             <div className="inputContainer">
                 <input id="bookName" placeholder="Enter book's name here" onChange={(event)=>bookChange(event)} value={book.bookName}/>
                 <input id="bookAuthor" placeholder="Enter author's name here" onChange={(event)=>bookChange(event)} value={book.bookAuthor}/>
