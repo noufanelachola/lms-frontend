@@ -69,6 +69,7 @@ function Search({schoolId}){
                             name={student.studentname}
                             stClas={student.studentclass}
                             admissionNumber={student.admissionnumber}
+                            takenBooks={student.taken}
                         />
                     )
                 })}    
