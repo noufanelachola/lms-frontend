@@ -1,12 +1,10 @@
-
 import profileMale from "../resources/profile-male.png";
-import profileBook from "../resources/book.png";
 
-function ProfileCard({filter,id,name,stClas,admissionNumber,takenBooks}) {
+function ProfileCard({id,name,stClas,admissionNumber,takenBooks}) {
 
     return(
         <div className="searchItem" id={id}>
-            <img src={filter === "student" ? profileMale : profileBook} alt="profile" />
+            <img src={profileMale} alt="profile" />
             <div className="searchItemSection ">
                 <p className="white">{name}</p>
                 <p className="white">{`Admission : ${admissionNumber} | ${stClas}`}</p>
