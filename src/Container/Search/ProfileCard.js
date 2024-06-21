@@ -2,7 +2,7 @@
 import profileMale from "../resources/profile-male.png";
 import profileBook from "../resources/book.png";
 
-function ProfileCard({filter,id,name,stClas,admissionNumber}) {
+function ProfileCard({filter,id,name,stClas,admissionNumber,takenBooks}) {
 
     return(
         <div className="searchItem" id={id}>
@@ -10,7 +10,7 @@ function ProfileCard({filter,id,name,stClas,admissionNumber}) {
             <div className="searchItemSection ">
                 <p className="white">{name}</p>
                 <p className="white">{`Admission : ${admissionNumber} | ${stClas}`}</p>
-                <p className="white">{`Taken 25 books before`}</p>
+                <p className="white">{`Taken ${takenBooks} book${takenBooks > 1 ?"s":""} before`}</p>
                 <div className="btn searchItemBtn">
                     <p className="medium">View Details</p>
                 </div>
