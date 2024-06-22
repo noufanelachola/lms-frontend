@@ -1,0 +1,46 @@
+
+.assignBook {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem 1rem;
+  }
+.assignBook .inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 60%;
+    min-width: 20rem;
+    margin-top: 20vh;
+}
+.assignBook input {
+    outline: none;
+    border: 0.1rem solid var(--clr-primary-blue-light);
+    border-radius: 0.5rem ;
+    background-color: transparent;
+    padding: 0.5rem;
+}
+
+.assignBookBtn {
+    padding: 0.5rem;
+    border: 0.05rem solid black;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputBtnContainer {
+    display: flex;
+    gap: 0.25rem;
+}
+.assignBookBtn:first-child {
+    background-color: var(--clr-red);
+    color: white;
+    flex-grow: 1;
+    }
+.assignBookBtn:last-child {
+    background-color: var(--clr-green);
+    color: white;
+    flex-grow: 1;
+}

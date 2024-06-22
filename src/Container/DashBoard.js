@@ -34,7 +34,7 @@ function DashBoard ({route,routeChange,signOut}) {
                     <a className="btn" href="#">Contact Support</a>
                     <a className="btn" href="#">Become an Affiliate</a>
                 </div>
-                <button className="dashBtn btn">
+                <button className="dashBtn btn" onClick={() => routeChange("assignBook")}>
                     <p className="iconText">Assign a New Book</p>
                 </button>
                 <button className="dashBtn btn" onClick={()=>signOut()} >
