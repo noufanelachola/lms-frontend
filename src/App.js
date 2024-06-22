@@ -7,6 +7,7 @@ import Home from './Container/Home/Home';
 import Search from './Container/Search/Search';
 import AddStudent from './Container/AddStudent/AddStudent';
 import AddBook from './Container/AddBook/AddBook';
+import AssignBook from './Container/AssignBook/AssignBook';
 
 import './App.css';
 
@@ -115,6 +116,7 @@ function App() {
             {route === "search" && <Search schoolId={account.schoolId} />}
             {route === "addStudent" && <AddStudent schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
             {route === "addBook" && <AddBook schoolId={account.schoolId} totalBooks={account.totalBooks} updateBooksCount={updateBooksCount} />}
+            {route === "assignBook" && <AssignBook />}
           </div> 
       }
 

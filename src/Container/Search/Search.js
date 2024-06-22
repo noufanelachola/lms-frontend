@@ -106,7 +106,7 @@ function Search({schoolId}){
                             key={book.bookid} 
                             id={book.bookid} 
                             bookName={book.bookname}
-                            nookAuthor={book.bookauthor}
+                            bookAuthor={book.bookauthor}
                             takenStudents={book.taken}
                         />
                     )
