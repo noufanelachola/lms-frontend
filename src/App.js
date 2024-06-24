@@ -116,7 +116,7 @@ function App() {
             {route === "search" && <Search schoolId={account.schoolId} />}
             {route === "addStudent" && <AddStudent schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
             {route === "addBook" && <AddBook schoolId={account.schoolId} totalBooks={account.totalBooks} updateBooksCount={updateBooksCount} />}
-            {route === "assignBook" && <AssignBook />}
+            {route === "assignBook" && <AssignBook updateBookStockCount={updateBookStockCount} schoolId={account.schoolId} />}
           </div> 
       }
 
