@@ -63,6 +63,7 @@ function App() {
     if(account.schoolId){
       updateStudentsCount();
       updateBooksCount();
+      updateStudentWithBooks();
     }
   },[account.schoolId]);
 
@@ -76,6 +77,20 @@ function App() {
       }));
     }).catch(error => console.log("error occured"));
 
+  }
+
+  const updateStudentWithBooks = () => {
+    fetch(`http://localhost:3000/student/withbookscount?schoolId=${account.schoolId}`)
+    .then(response => response.json())
+    .then(count => {
+      setAccount(prevState => ({
+        ...prevState,
+        withBooks : count
+      }))
+    })
+    .catch(error => {
+      console.log("error updating students with books");
+    });
   }
 
   const updateBooksCount = () => {
@@ -112,11 +127,11 @@ function App() {
         <Login routeChange={routeChange} updateAccount={updateAccount} /> :
         <div className="appDashBoard">
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
-            {route === "home" && <Home account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} />}
+            {route === "home" && <Home account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} withBooks={account.withBooks} />}
             {route === "search" && <Search schoolId={account.schoolId} />}
             {route === "addStudent" && <AddStudent schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
             {route === "addBook" && <AddBook schoolId={account.schoolId} totalBooks={account.totalBooks} updateBooksCount={updateBooksCount} />}
-            {route === "assignBook" && <AssignBook updateBookStockCount={updateBookStockCount} schoolId={account.schoolId} />}
+            {route === "assignBook" && <AssignBook updateBookStockCount={updateBookStockCount} updateStudentWithBooks={updateStudentWithBooks} schoolId={account.schoolId} />}
           </div> 
       }
 
