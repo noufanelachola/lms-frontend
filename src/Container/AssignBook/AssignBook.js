@@ -1,7 +1,7 @@
 import {React,useState} from "react";
 import "./AssignBook.css";
 
-function AssignBook({schoolId,updateBookStockCount}) {
+function AssignBook({schoolId,updateBookStockCount,updateStudentWithBooks}) {
 
     const [assign,setAssign] = useState({
         studentId : "",
@@ -40,6 +40,7 @@ function AssignBook({schoolId,updateBookStockCount}) {
                     alert("transaction successful");
                     onClear();
                     updateBookStockCount();
+                    updateStudentWithBooks();
                 }
             }).catch(error => console.error("Error: ",error));
         }
