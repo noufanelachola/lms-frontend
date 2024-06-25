@@ -57,6 +57,7 @@ function App() {
         withBooks : 0
       }
     );
+    setAssignStudents([]);
     routeChange("logIn");
   }
   
@@ -140,7 +141,9 @@ function App() {
   }
 
   useEffect(() => {
-    updateAssignStudent();
+    if(account.schoolId){
+      updateAssignStudent();
+    }
   },[account.schoolId,account.stockBooks])
 
   return (

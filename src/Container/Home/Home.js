@@ -37,6 +37,7 @@ function Home({account,totalStudents,totalBooks,stockBooks,withBooks,assignStude
                                 <th>Name</th>
                                 <th>Class</th>
                                 <th>Admission No</th>
+                                <th>Book Name</th>
                                 <th>Date when acquired</th>
                                 <th>status</th>
                                 <th>Fine</th>
@@ -52,6 +53,7 @@ function Home({account,totalStudents,totalBooks,stockBooks,withBooks,assignStude
                                             <td>{student.studentname}</td>
                                             <td>{student.studentclass}</td>
                                             <td>{student.admissionnumber}</td>
+                                            <td>{student.bookname}</td>
                                             <td>{student.issue_date}</td>
                                             <td>{student.status}</td>
                                             <td>50</td>
