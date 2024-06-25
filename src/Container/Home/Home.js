@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 
-function Home({account,totalStudents,totalBooks,stockBooks,withBooks}) {
+function Home({account,totalStudents,totalBooks,stockBooks,withBooks,assignStudents}) {
 
     return (
         <div className="window home">
@@ -28,7 +28,7 @@ function Home({account,totalStudents,totalBooks,stockBooks,withBooks}) {
             <div className="homeCont2 homeCont">
                 <div className="homeTableHeader">
                     <p className="medium subTitle smallLineHeight">To Return</p>
-                    <p><span className="strong green smallLineHeight">112</span> Students have taken books...</p>
+                    <p><span className="strong green smallLineHeight">{assignStudents.length}</span>{` Student${assignStudents.length > 1 ? "s have" : " has"} taken books...`}</p>
                 </div>
                 <div className="homeTableCont">
                     <table className="returnTable">
@@ -44,123 +44,23 @@ function Home({account,totalStudents,totalBooks,stockBooks,withBooks}) {
                             </tr>
                         </thead>    
                         <tbody>
-                            <tr>
-                                <td>Noufan Elachola</td>
-                                <td>10-C</td>
-                                <td>23GCS16</td>
-                                <td>24-05-2024</td>
-                                <td>Pending</td>
-                                <td>50</td>
-                                <td><button className="btn" >Mark as receivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>Aman Elachola</td>
-                                <td>9-C</td>
-                                <td>23GCS156</td>
-                                <td>04-05-2024</td>
-                                <td>Pending</td>
-                                <td>5</td>
-                                <td><button className="btn" >Mark as receivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>Noufan Elachola</td>
-                                <td>10-C</td>
-                                <td>23GCS16</td>
-                                <td>24-05-2024</td>
-                                <td>Pending</td>
-                                <td>50</td>
-                                <td><button className="btn" >Mark as receivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>Aman Elachola</td>
-                                <td>9-C</td>
-                                <td>23GCS156</td>
-                                <td>04-05-2024</td>
-                                <td>Pending</td>
-                                <td>5</td>
-                                <td><button className="btn" >Mark as receivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>Noufan Elachola</td>
-                                <td>10-C</td>
-                                <td>23GCS16</td>
-                                <td>24-05-2024</td>
-                                <td>Pending</td>
-                                <td>50</td>
-                                <td><button className="btn" >Mark as receivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>Aman Elachola</td>
-                                <td>9-C</td>
-                                <td>23GCS156</td>
-                                <td>04-05-2024</td>
-                                <td>Pending</td>
-                                <td>5</td>
-                                <td><button className="btn" >Mark as receivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>Noufan Elachola</td>
-                                <td>10-C</td>
-                                <td>23GCS16</td>
-                                <td>24-05-2024</td>
-                                <td>Pending</td>
-                                <td>50</td>
-                                <td><button className="btn" >Mark as receivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>Aman Elachola</td>
-                                <td>9-C</td>
-                                <td>23GCS156</td>
-                                <td>04-05-2024</td>
-                                <td>Pending</td>
-                                <td>5</td>
-                                <td><button className="btn" >Mark as receivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>Noufan Elachola</td>
-                                <td>10-C</td>
-                                <td>23GCS16</td>
-                                <td>24-05-2024</td>
-                                <td>Pending</td>
-                                <td>50</td>
-                                <td><button className="btn" >Mark as receivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>Aman Elachola</td>
-                                <td>9-C</td>
-                                <td>23GCS156</td>
-                                <td>04-05-2024</td>
-                                <td>Pending</td>
-                                <td>5</td>
-                                <td><button className="btn" >Mark as receivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>Noufan Elachola</td>
-                                <td>10-C</td>
-                                <td>23GCS16</td>
-                                <td>24-05-2024</td>
-                                <td>Pending</td>
-                                <td>50</td>
-                                <td><button className="btn" >Mark as receivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>Aman Elachola</td>
-                                <td>9-C</td>
-                                <td>23GCS156</td>
-                                <td>04-05-2024</td>
-                                <td>Pending</td>
-                                <td>5</td>
-                                <td><button className="btn" >Mark as receivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>Noufan Elachola</td>
-                                <td>10-C</td>
-                                <td>23GCS16</td>
-                                <td>24-05-2024</td>
-                                <td>Pending</td>
-                                <td>50</td>
-                                <td><button className="btn" >Mark as receivered</button></td>
-                            </tr>
+                            {
+                                assignStudents &&
+                                assignStudents.map(student => {
+                                    return (
+                                        <tr>
+                                            <td>{student.studentname}</td>
+                                            <td>{student.studentclass}</td>
+                                            <td>{student.admissionnumber}</td>
+                                            <td>{student.issue_date}</td>
+                                            <td>{student.status}</td>
+                                            <td>50</td>
+                                            <td><button className="btn" >Mark as receivered</button></td>
+                                        </tr>
+                                        
+                                    )
+                                })
+                            }
                         </tbody>    
                     </table>
                 </div>
