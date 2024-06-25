@@ -25,7 +25,8 @@ function App() {
       totalStudents : 0,
       withBooks : 0
     }
-  )
+  );
+  const [assignStudents,setAssignStudents] = useState([]);
 
   const routeChange = (rout) => {
     setRoute(rout);
@@ -120,6 +121,28 @@ function App() {
     }).catch(error => console.log("error occured while stock count books"));
   }
 
+  const updateAssignStudent = () => {
+    if(account.schoolId){
+      fetch(`http://localhost:3000/assign/get?schoolId=${account.schoolId}`)
+    .then(response => response.json())
+    .then(transaction => {
+      if (transaction[0].transactionid) {
+        setAssignStudents(transaction);
+        console.log(transaction);
+      } else {
+        throw new Error(transaction[0]);
+      }
+    })
+    .catch(error => {
+      console.log("Error fetching students with books");
+    })
+    }
+  }
+
+  useEffect(() => {
+    updateAssignStudent();
+  },[account.schoolId,account.stockBooks])
+
   return (
     <div className="App">
       {
@@ -127,7 +150,7 @@ function App() {
         <Login routeChange={routeChange} updateAccount={updateAccount} /> :
         <div className="appDashBoard">
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
-            {route === "home" && <Home account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} withBooks={account.withBooks} />}
+            {route === "home" && <Home account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} withBooks={account.withBooks} assignStudents={assignStudents} />}
             {route === "search" && <Search schoolId={account.schoolId} />}
             {route === "addStudent" && <AddStudent schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
             {route === "addBook" && <AddBook schoolId={account.schoolId} totalBooks={account.totalBooks} updateBooksCount={updateBooksCount} />}
