@@ -140,6 +140,20 @@ function App() {
     }
   }
 
+  const assignSubmit = (id,transactionId,bookId) => {
+    fetch(`http://localhost:3000/assign/submit?schoolId=${account.schoolId}&transactionId=${transactionId}&bookId=${bookId}`,{
+      method : "put",
+      headers : {"Content-Type" : 'application/json'}
+    }).then((response) => response.json())
+    .then(result => {
+      alert("submitted succesfully");
+      setAssignStudents(assignStudents.filter((student,index) => index !== id))
+    })
+    .catch(error => {
+      console.log("error submittiong books");
+    })
+  }
+
   useEffect(() => {
     if(account.schoolId){
       updateAssignStudent();
@@ -153,7 +167,7 @@ function App() {
         <Login routeChange={routeChange} updateAccount={updateAccount} /> :
         <div className="appDashBoard">
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
-            {route === "home" && <Home account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} withBooks={account.withBooks} assignStudents={assignStudents} />}
+            {route === "home" && <Home account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} withBooks={account.withBooks} assignStudents={assignStudents} assignSubmit={assignSubmit} />}
             {route === "search" && <Search schoolId={account.schoolId} />}
             {route === "addStudent" && <AddStudent schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
             {route === "addBook" && <AddBook schoolId={account.schoolId} totalBooks={account.totalBooks} updateBooksCount={updateBooksCount} />}
