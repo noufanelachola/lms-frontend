@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 
-function Home({account,totalStudents,totalBooks,stockBooks,withBooks,assignStudents}) {
+function Home({account,totalStudents,totalBooks,stockBooks,withBooks,assignStudents,assignSubmit}) {
 
     return (
         <div className="window home">
@@ -40,14 +40,13 @@ function Home({account,totalStudents,totalBooks,stockBooks,withBooks,assignStude
                                 <th>Book Name</th>
                                 <th>Date when acquired</th>
                                 <th>status</th>
-                                <th>Fine</th>
                                 <th></th>
                             </tr>
                         </thead>    
                         <tbody>
                             {
                                 assignStudents &&
-                                assignStudents.map(student => {
+                                assignStudents.map((student,index) => {
                                     return (
                                         <tr>
                                             <td>{student.studentname}</td>
@@ -56,8 +55,7 @@ function Home({account,totalStudents,totalBooks,stockBooks,withBooks,assignStude
                                             <td>{student.bookname}</td>
                                             <td>{student.issue_date}</td>
                                             <td>{student.status}</td>
-                                            <td>50</td>
-                                            <td><button className="btn" >Mark as receivered</button></td>
+                                            <td><button className="btn" onClick={() => assignSubmit(index,student.transactionid,student.bookid)} >Mark as receivered</button></td>
                                         </tr>
                                         
                                     )
