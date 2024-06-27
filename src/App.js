@@ -147,7 +147,9 @@ function App() {
     }).then((response) => response.json())
     .then(result => {
       alert("submitted succesfully");
-      setAssignStudents(assignStudents.filter((student,index) => index !== id))
+      setAssignStudents(assignStudents.filter((student,index) => index !== id));
+      updateBookStockCount();
+      updateStudentWithBooks();
     })
     .catch(error => {
       console.log("error submittiong books");
@@ -158,7 +160,7 @@ function App() {
     if(account.schoolId){
       updateAssignStudent();
     }
-  },[account.schoolId,account.stockBooks])
+  },[account.schoolId,account.stockBooks,account.withBooks]);
 
   return (
     <div className="App">

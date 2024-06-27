@@ -1,6 +1,6 @@
 import profileBook from "../resources/book.png";
 
-function BookCard({id,bookName,bookAuthor,takenStudents}) {
+function BookCard({id,bookId,bookName,bookAuthor,takenStudents}) {
 
     return(
         <div className="searchItem" id={id}>
@@ -12,6 +12,7 @@ function BookCard({id,bookName,bookAuthor,takenStudents}) {
                 <div className="btn searchItemBtn">
                     <p className="medium">View Details</p>
                 </div>
+                <div className="idSection">{bookId}</div>
             </div>
         </div>
 

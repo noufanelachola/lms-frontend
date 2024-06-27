@@ -92,6 +92,7 @@ function Search({schoolId}){
                             filter={filter} 
                             key={student.studentid} 
                             id={student.studentid} 
+                            stId={student.studentid}
                             name={student.studentname}
                             stClas={student.studentclass}
                             admissionNumber={student.admissionnumber}
@@ -105,6 +106,7 @@ function Search({schoolId}){
                         <BookCard 
                             key={book.bookid} 
                             id={book.bookid} 
+                            bookId={book.bookid}
                             bookName={book.bookname}
                             bookAuthor={book.bookauthor}
                             takenStudents={book.taken}

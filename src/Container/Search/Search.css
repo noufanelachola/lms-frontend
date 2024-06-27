@@ -92,11 +92,13 @@
     visibility: visible;
 }
 .searchItem {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     border: black 0.1rem solid;
     border-radius: 1rem;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
 }
 .searchItem > img {
     width: 100%;
@@ -116,4 +118,17 @@
     padding: 0.2rem;
     border-radius: 0.5rem;
     margin-top: 0.25rem;
+}
+.searchItem .idSection {
+    position: absolute;
+    top : 0.5rem;
+    right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: var(--clr-primary-blue-light);
+    color: white;
+    width: 3rem;
+    padding: 0.1rem rem;
 }
