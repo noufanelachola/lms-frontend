@@ -1,6 +1,6 @@
 import profileMale from "../resources/profile-male.png";
 
-function ProfileCard({id,name,stClas,admissionNumber,takenBooks}) {
+function ProfileCard({id,stId,name,stClas,admissionNumber,takenBooks}) {
 
     return(
         <div className="searchItem" id={id}>
@@ -13,6 +13,7 @@ function ProfileCard({id,name,stClas,admissionNumber,takenBooks}) {
                     <p className="medium">View Details</p>
                 </div>
             </div>
+            <div className="idSection">{stId}</div>
         </div>
 
                 
