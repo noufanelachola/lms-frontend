@@ -22,6 +22,10 @@
 .black{
   color: black;
 }
+.red{
+  color : rgb(255, 0, 0);
+
+}
 .green{
   color: var(--clr-green-dark);
 }

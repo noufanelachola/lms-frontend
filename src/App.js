@@ -8,6 +8,7 @@ import Search from './Container/Search/Search';
 import AddStudent from './Container/AddStudent/AddStudent';
 import AddBook from './Container/AddBook/AddBook';
 import AssignBook from './Container/AssignBook/AssignBook';
+import Profile from "./Container/Profile/Profile";
 
 import './App.css';
 
@@ -170,6 +171,7 @@ function App() {
         <div className="appDashBoard">
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
             {route === "home" && <Home account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} withBooks={account.withBooks} assignStudents={assignStudents} assignSubmit={assignSubmit} />}
+            {/* {route === "search" && <Profile/>} */}
             {route === "search" && <Search schoolId={account.schoolId} />}
             {route === "addStudent" && <AddStudent schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
             {route === "addBook" && <AddBook schoolId={account.schoolId} totalBooks={account.totalBooks} updateBooksCount={updateBooksCount} />}
