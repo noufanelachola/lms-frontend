@@ -38,7 +38,7 @@ function DashBoard ({route,routeChange,signOut}) {
                     <p className="iconText">Assign a New Book</p>
                 </button>
                 <button className="dashBtn btn" onClick={()=>signOut()} >
-                    <p className="iconText">Sign Out</p>
+                    <p className="iconText white">Sign Out</p>
                 </button>
             </div>
         </div>
