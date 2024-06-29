@@ -52,7 +52,7 @@ function App() {
     setAccount(prevState => ({
       ...prevState,
       schoolName : school.school_name,
-      dop : school.date,
+      dop : school.start_date,
       doe : school.end_date,
       status : school.is_active ? "Active" : "Not Active",
       schoolId : school.id
