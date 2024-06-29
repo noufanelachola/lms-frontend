@@ -4,7 +4,8 @@ import { useState,useEffect } from 'react';
 import Login from './Container/Login/Login';
 import DashBoard from './Container/DashBoard';
 import Home from './Container/Home/Home';
-import Search from './Container/Search/Search';
+// import Search from './Container/Search/Search';
+import Find from './Container/Find/Find';
 import AddStudent from './Container/AddStudent/AddStudent';
 import AddBook from './Container/AddBook/AddBook';
 import AssignBook from './Container/AssignBook/AssignBook';
@@ -29,9 +30,23 @@ function App() {
   );
   const [assignStudents,setAssignStudents] = useState([]);
 
+  const [assign,setAssign] = useState({
+    studentId : "",
+    bookId : ""
+  });
+
   const routeChange = (rout) => {
     setRoute(rout);
   }
+
+  const setAssignWithId = (id) => {
+    routeChange("assignBook");
+    setAssign({
+      studentId : id,
+      bookId : ""
+    })
+  }
+
 
   const updateAccount = (school) => {
     setAccount(prevState => ({
@@ -171,11 +186,11 @@ function App() {
         <div className="appDashBoard">
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
             {route === "home" && <Home account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} withBooks={account.withBooks} assignStudents={assignStudents} assignSubmit={assignSubmit} />}
-            {/* {route === "search" && <Profile/>} */}
-            {route === "search" && <Search schoolId={account.schoolId} />}
+            {route === "search" && <Find schoolId={account.schoolId} routeChange={routeChange} setAssignWithId={setAssignWithId} />}
             {route === "addStudent" && <AddStudent schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
             {route === "addBook" && <AddBook schoolId={account.schoolId} totalBooks={account.totalBooks} updateBooksCount={updateBooksCount} />}
-            {route === "assignBook" && <AssignBook updateBookStockCount={updateBookStockCount} updateStudentWithBooks={updateStudentWithBooks} schoolId={account.schoolId} />}
+            {route === "assignBook" && <AssignBook updateBookStockCount={updateBookStockCount} updateStudentWithBooks={updateStudentWithBooks} schoolId={account.schoolId} assign={assign} setAssign={setAssign} />}
+            {route === "profile" && <Profile routeChange={routeChange} />}
           </div> 
       }
 
