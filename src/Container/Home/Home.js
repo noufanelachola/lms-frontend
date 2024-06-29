@@ -39,6 +39,7 @@ function Home({account,totalStudents,totalBooks,stockBooks,withBooks,assignStude
                                 <th>Admission No</th>
                                 <th>Book Name</th>
                                 <th>Date when acquired</th>
+                                <th>Submit Before</th>
                                 <th>status</th>
                                 <th></th>
                             </tr>
@@ -54,6 +55,7 @@ function Home({account,totalStudents,totalBooks,stockBooks,withBooks,assignStude
                                             <td>{student.admissionnumber}</td>
                                             <td>{student.bookname}</td>
                                             <td>{student.issue_date}</td>
+                                            <td>{student.due_date}</td>
                                             <td>{student.status}</td>
                                             <td><button className="btn" onClick={() => assignSubmit(index,student.transactionid,student.bookid)} >Mark as receivered</button></td>
                                         </tr>
