@@ -110,6 +110,8 @@
     background-color: var(--clr-primary-blue-light);
     width: 100%;
     border-radius: 0rem 0rem 0.9rem 0.9rem;
+    display: flex;
+    flex-direction: column;
 }
 .searchItemBtn {
     background-color: white;
@@ -118,7 +120,7 @@
     align-items: center;
     padding: 0.2rem;
     border-radius: 0.5rem;
-    margin-top: 0.25rem;
+    margin-top: auto;
 }
 .searchItem .idSection {
     position: absolute;

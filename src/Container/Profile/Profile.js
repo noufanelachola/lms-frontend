@@ -3,13 +3,23 @@ import "./Profile.css";
 import profileMale from "../resources/profile-male.png";
 
 
-function Profile() {
+function Profile({setFind,student,setAssignWithId}) {
+
+    const getSearch = () => {
+        setFind({
+            route : "search",
+            index : ""
+        });
+        console.log("student",student);
+    }
+
+    
     return(
         <div className="profile window">
 
             <div className="profileHead">
                 <div className="navigation">
-                    <div className="profileBtn btn">{`<`}</div>
+                    <div className="profileBtn btn" onClick={()=>getSearch()} >{`<`}</div>
                     <div className="profileBtn btn">Edit Information</div>
                 </div>
                 <div className="profileSection">
@@ -18,13 +28,13 @@ function Profile() {
                     </div>
                     <div className="profileDetails">
                         <div className="profileDetailsMain">
-                            <p className="name white subTitle">Aman Elachola</p>
-                            <p className="author white">"A damn good reader"</p>
+                            <p className="name white subTitle">{student.studentname}</p>
+                            <p className="author white italic light">"A damn good reader"</p>
                         </div>
                         <div className="profileDetailsSub">
-                            <div className="id profileBtn">#89</div>
-                            <div className="class profileBtn">Class 10-A</div>
-                            <div className="admission profileBtn">789865</div>
+                            <div className="id profileBtn">{`#${student.studentid}`}</div>
+                            <div className="class profileBtn">{`Class ${student.studentclass}`}</div>
+                            <div className="admission profileBtn">{student.admissionnumber}</div>
                         </div>
                     </div>
                 </div>
@@ -68,46 +78,13 @@ function Profile() {
                                 <td>Pending</td>
                                 <td><button>Mark as submitted</button></td>
                             </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>Aadujeevitham</td>
-                                <td>12-04-2020</td>
-                                <td>12-05-2020</td>
-                                <td>Pending</td>
-                                <td><button>Mark as submitted</button></td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>Aadujeevitham</td>
-                                <td>12-04-2020</td>
-                                <td>12-05-2020</td>
-                                <td>Pending</td>
-                                <td><button>Mark as submitted</button></td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>Aadujeevitham</td>
-                                <td>12-04-2020</td>
-                                <td>12-05-2020</td>
-                                <td>Pending</td>
-                                <td><button>Mark as submitted</button></td>
-                            </tr>
-
-                            <tr>
-                                <td>01</td>
-                                <td>Aadujeevitham</td>
-                                <td>12-04-2020</td>
-                                <td>12-05-2020</td>
-                                <td>Pending</td>
-                                <td><button>Mark as submitted</button></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
             <div className="profileBtnSection">
-                <div className="btn">Assign a Book</div>
+                <div className="btn" onClick={()=>setAssignWithId(student.studentid)}>Assign a Book</div>
                 <div className="btn white">Delete Profile</div>
             </div>
 

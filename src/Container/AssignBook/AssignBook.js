@@ -1,12 +1,12 @@
 import {React,useState} from "react";
 import "./AssignBook.css";
 
-function AssignBook({schoolId,updateBookStockCount,updateStudentWithBooks}) {
+function AssignBook({schoolId,updateBookStockCount,updateStudentWithBooks,assign,setAssign}) {
 
-    const [assign,setAssign] = useState({
-        studentId : "",
-        bookId : ""
-    });
+    // const [assign,setAssign] = useState({
+    //     studentId : "",
+    //     bookId : ""
+    // });
 
     const onInputChange = (state,event) => {
         setAssign(prevState => ({

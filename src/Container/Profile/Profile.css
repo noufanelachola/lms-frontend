@@ -124,7 +124,7 @@
 }
 
 .profileTableCont::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 0.25rem;
     height: 0.5rem;
 }
 .profileTableCont::-webkit-scrollbar-thumb {

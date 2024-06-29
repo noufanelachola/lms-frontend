@@ -8,51 +8,7 @@ import iconSearch from "../resources/searchLogo.png";
 
 import "./Search.css";
 
-function Search({schoolId}){
-
-    const [filter,setFilter] = useState("student");
-    const [search,setSearch] = useState("");
-    const [students,setStudents] = useState([]);
-    const [books,setBooks] = useState([]);
-    
-    useEffect(() => {
-        getStudents();
-        getBooks();
-    },[]);
-
-    const filterChange = (sort) => {
-        setFilter(sort);
-    }
-
-    const onSearchInputChange = (event) => {
-        setSearch(event.target.value);
-    }
-
-    const keyPress = (event) => {
-        if(event.key === "Enter" && search){
-            filter === "student" ? getStudents() : getBooks();
-        }
-    }
-
-    const getStudents = () => {
-        fetch(`http://localhost:3000/student/get?schoolId=${schoolId}&search=${search}`)
-        .then(response => response.json())
-        .then(students => {
-            setStudents(students);
-        })
-        .catch(error => console.log(error , "Error fetching students"));
-    }
-
-    const getBooks = () => {
-        fetch(`http://localhost:3000/book/get?schoolId=${schoolId}&search=${search}`)
-        .then(response => response.json())
-        .then(books => {
-            setBooks(books);
-        })
-        .catch(error => console.log("Error fetching books"));
-    }
-
-
+function Search({students,books,filter,filterChange,search,keyPress,onSearchInputChange,setFind}){
     return(
         <div className="search window">
             <div className="searchCont1">
@@ -86,17 +42,14 @@ function Search({schoolId}){
             </div>
             
             <div className="searchContainer">
-                {filter === "student" && students.map(student => {
+                {filter === "student" && students.map((student,index) => {
                     return(
                         <ProfileCard 
+                            index={index}
                             filter={filter} 
                             key={student.studentid} 
-                            id={student.studentid} 
-                            stId={student.studentid}
-                            name={student.studentname}
-                            stClas={student.studentclass}
-                            admissionNumber={student.admissionnumber}
-                            takenBooks={student.taken}
+                            student={student}
+                            setFind={setFind}
                         />
                     )
                 })}    
