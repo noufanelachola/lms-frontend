@@ -35,6 +35,17 @@ function Profile({setFind,student,setAssignWithId,assignSubmit}) {
 
     const [history,setHistory] = useState([]);
 
+    const returnBooksCount = () => {
+        return history.reduce((count, transaction) => {
+            return transaction.status === "pending" ? count + 1 : count;
+        }, 0);
+    }
+    const submittedBooksCount = () => {
+        return history.reduce((count, transaction) => {
+            return transaction.status === "submitted" ? count + 1 : count;
+        }, 0);
+    }
+
     const updatehistory = () => {
         fetch(`http://localhost:3000/assign/get?schoolId=${student.schoolid}&studentId=${student.studentid}`)
         .then(res => res.json())
@@ -74,18 +85,18 @@ function Profile({setFind,student,setAssignWithId,assignSubmit}) {
             <div className="readStats">
                 <div>
                     <p className="medText white">Books Read</p>
-                    <p className="medText white">250</p>
+                    <p className="medText white">{submittedBooksCount()}</p>
                 </div>
                 <div>
-                    <p className="medText white">Books Not Returned</p>
-                    <p className="medText white">5</p>
+                    <p className="medText white">Books To Return</p>
+                    <p className="medText white">{returnBooksCount()}</p>
                 </div>
             </div>
 
             <div className="historySection">
                 <div className="tableHead">
                     <p className="subTitle medium smallLineHeight" >History</p>
-                    <p><span className="red medium">3</span> books to return</p>
+                    <p><span className="red medium">{returnBooksCount()}</span>{` book${returnBooksCount() > 1 ? "s " : " "}to return`}</p>
                 </div>
                 <div className="profileTableCont">
                     <table className="profileTable">
