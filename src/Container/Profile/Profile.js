@@ -1,9 +1,29 @@
 
 import "./Profile.css";
 import profileMale from "../resources/profile-male.png";
+import { useEffect, useState } from "react";
 
 
-function Profile({setFind,student,setAssignWithId}) {
+function Profile({setFind,student,setAssignWithId,assignSubmit}) {
+    useEffect(() => {
+        updatehistory();
+    },[student.studentId]);
+
+    const onClickAssign = async(schoolId,transactionId,bookId) => {
+        await assignSubmit(schoolId,transactionId,bookId);
+        setHistory(prevHistory => 
+            prevHistory.map(transaction => {
+                if(transaction.transactionid === transactionId){
+                    return({
+                        ...transaction,
+                        status:"submitted"
+                    })
+                }
+                return transaction;
+            })
+        );
+    }
+    
 
     const getSearch = () => {
         setFind({
@@ -13,7 +33,17 @@ function Profile({setFind,student,setAssignWithId}) {
         console.log("student",student);
     }
 
-    
+    const [history,setHistory] = useState([]);
+
+    const updatehistory = () => {
+        fetch(`http://localhost:3000/assign/get?schoolId=${student.schoolid}&studentId=${student.studentid}`)
+        .then(res => res.json())
+        .then(transaction => setHistory(transaction))
+        .catch(error => {
+            console.log("Error fetching student transaction")
+        });
+    }
+
     return(
         <div className="profile window">
 
@@ -63,6 +93,7 @@ function Profile({setFind,student,setAssignWithId}) {
                             <tr>
                                 <th>S.No</th>
                                 <th>Book Name</th>
+                                <th>Book Author</th>
                                 <th>Date when acquired</th>
                                 <th>Date to be submitted</th>
                                 <th>Status</th>
@@ -70,14 +101,23 @@ function Profile({setFind,student,setAssignWithId}) {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>Aadujeevitham</td>
-                                <td>12-04-2020</td>
-                                <td>12-05-2020</td>
-                                <td>Pending</td>
-                                <td><button>Mark as submitted</button></td>
-                            </tr>
+                        {history.length > 0 ? (
+                            history.map((transaction, index) => (
+                                <tr key={transaction.transactionid}>
+                                    <td>{index + 1}</td>
+                                    <td>{transaction.bookname}</td>
+                                    <td>{transaction.bookauthor}</td>
+                                    <td>{transaction.issue_date}</td>
+                                    <td>{transaction.due_date}</td>
+                                    <td>{transaction.status}</td>
+                                    <td>{transaction.status === "pending" ? <button className="btn" onClick={() => onClickAssign(transaction.schoolid,transaction.transactionid,transaction.bookid)} >Mark as submitted</button> : ""}</td>
+                                </tr>                                    
+                            ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="10" className="lightmedium">No transactions found</td>
+                                </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>

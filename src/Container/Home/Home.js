@@ -46,22 +46,26 @@ function Home({account,totalStudents,totalBooks,stockBooks,withBooks,assignStude
                         </thead>    
                         <tbody>
                             {
-                                assignStudents &&
-                                assignStudents.map((student,index) => {
-                                    return (
-                                        <tr>
-                                            <td>{student.studentname}</td>
-                                            <td>{student.studentclass}</td>
-                                            <td>{student.admissionnumber}</td>
-                                            <td>{student.bookname}</td>
-                                            <td>{student.issue_date}</td>
-                                            <td>{student.due_date}</td>
-                                            <td>{student.status}</td>
-                                            <td><button className="btn" onClick={() => assignSubmit(index,student.transactionid,student.bookid)} >Mark as receivered</button></td>
-                                        </tr>
-                                        
-                                    )
-                                })
+                                assignStudents.length ?
+                                    (assignStudents.map((student,index) => {
+                                        return (
+                                            <tr>
+                                                <td>{student.studentname}</td>
+                                                <td>{student.studentclass}</td>
+                                                <td>{student.admissionnumber}</td>
+                                                <td>{student.bookname}</td>
+                                                <td>{student.issue_date}</td>
+                                                <td>{student.due_date}</td>
+                                                <td>{student.status}</td>
+                                                <td><button className="btn" onClick={() => assignSubmit(index,student.transactionid,student.bookid)} >Mark as receivered</button></td>
+                                            </tr>
+                                            
+                                        )
+                                    }))
+                                :
+                                    <tr>
+                                        <td colSpan="10">No books to return</td>
+                                    </tr>    
                             }
                         </tbody>    
                     </table>

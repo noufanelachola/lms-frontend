@@ -48,9 +48,9 @@
     margin-bottom: 2.5rem;
 }
 
-.profile .profileHead .profileSection .profileDetails .profileDetailsMain {
-    /* margin-top: 5.75rem; */
-}
+/* .profile .profileHead .profileSection .profileDetails .profileDetailsMain {
+    margin-top: 5.75rem;
+} */
 
 .profile .profileHead .profileSection .profileDetails .profileDetailsSub {
     display: flex;
