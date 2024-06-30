@@ -2,7 +2,7 @@ import {useState,useEffect} from "react";
 import Search from "../Search/Search";
 import Profile from "../Profile/Profile";
 
-function Find({schoolId,setAssignWithId}) {
+function Find({schoolId,setAssignWithId,assignSubmit}) {
 
     const [filter,setFilter] = useState("student");
     const [search,setSearch] = useState("");
@@ -68,6 +68,7 @@ function Find({schoolId,setAssignWithId}) {
                 setFind={setFind} 
                 student={students[find.index]} 
                 setAssignWithId={setAssignWithId}
+                assignSubmit={assignSubmit}
             />    
     );
 }

@@ -140,18 +140,22 @@ function App() {
 
   const updateAssignStudent = () => {
     if(account.schoolId){
-      fetch(`http://localhost:3000/assign/get?schoolId=${account.schoolId}`)
+      fetch(`http://localhost:3000/assign/get?schoolId=${account.schoolId}&status=pending`)
     .then(response => response.json())
     .then(transaction => {
-      if (transaction[0].transactionid) {
-        setAssignStudents(transaction);
-        console.log(transaction);
+      if(transaction.length){
+        if (transaction[0].transactionid) {
+          setAssignStudents(transaction);
+          console.log(transaction);
+        } else {
+          throw new Error(transaction[0]);
+        }
       } else {
-        throw new Error(transaction[0]);
+        setAssignStudents([])
       }
     })
     .catch(error => {
-      console.log("Error fetching students with books");
+      console.log(error,"Error fetching students with books");
     })
     }
   }
@@ -186,7 +190,7 @@ function App() {
         <div className="appDashBoard">
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
             {route === "home" && <Home account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} withBooks={account.withBooks} assignStudents={assignStudents} assignSubmit={assignSubmit} />}
-            {route === "search" && <Find schoolId={account.schoolId} routeChange={routeChange} setAssignWithId={setAssignWithId} />}
+            {route === "search" && <Find schoolId={account.schoolId} routeChange={routeChange} setAssignWithId={setAssignWithId} assignSubmit={assignSubmit} />}
             {route === "addStudent" && <AddStudent schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
             {route === "addBook" && <AddBook schoolId={account.schoolId} totalBooks={account.totalBooks} updateBooksCount={updateBooksCount} />}
             {route === "assignBook" && <AssignBook updateBookStockCount={updateBookStockCount} updateStudentWithBooks={updateStudentWithBooks} schoolId={account.schoolId} assign={assign} setAssign={setAssign} />}
