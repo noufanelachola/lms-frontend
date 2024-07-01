@@ -64,7 +64,7 @@ function Home({account,totalStudents,totalBooks,stockBooks,withBooks,assignStude
                                     }))
                                 :
                                     <tr>
-                                        <td colSpan="10">No books to return</td>
+                                        <td colSpan="10" className="light" >No books to return</td>
                                     </tr>    
                             }
                         </tbody>    

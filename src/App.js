@@ -35,6 +35,8 @@ function App() {
     bookId : ""
   });
 
+  
+
   const routeChange = (rout) => {
     setRoute(rout);
   }
@@ -116,6 +118,11 @@ function App() {
     updateBookStockCount();
   }
 
+  const updateStudent = () => {
+    updateStudentsCount();
+    updateStudentWithBooks();
+  }
+
   const updateBookTotalCount = () => {
     fetch(`http://localhost:3000/book/totalcount?schoolId=${account.schoolId}`)
     .then(res => res.json())
@@ -182,6 +189,7 @@ function App() {
     }
   },[account.schoolId,account.stockBooks,account.withBooks]);
 
+
   return (
     <div className="App">
       {
@@ -190,7 +198,7 @@ function App() {
         <div className="appDashBoard">
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
             {route === "home" && <Home account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} withBooks={account.withBooks} assignStudents={assignStudents} assignSubmit={assignSubmit} />}
-            {route === "search" && <Find schoolId={account.schoolId} routeChange={routeChange} setAssignWithId={setAssignWithId} assignSubmit={assignSubmit} />}
+            {route === "search" && <Find schoolId={account.schoolId} routeChange={routeChange} setAssignWithId={setAssignWithId} assignSubmit={assignSubmit} updateStudent={updateStudent} />}
             {route === "addStudent" && <AddStudent schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
             {route === "addBook" && <AddBook schoolId={account.schoolId} totalBooks={account.totalBooks} updateBooksCount={updateBooksCount} />}
             {route === "assignBook" && <AssignBook updateBookStockCount={updateBookStockCount} updateStudentWithBooks={updateStudentWithBooks} schoolId={account.schoolId} assign={assign} setAssign={setAssign} />}
