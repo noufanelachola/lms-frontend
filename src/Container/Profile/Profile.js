@@ -4,10 +4,10 @@ import profileMale from "../resources/profile-male.png";
 import { useEffect, useState } from "react";
 
 
-function Profile({setFind,student,setAssignWithId,assignSubmit}) {
+function Profile({setFind,student,setAssignWithId,assignSubmit,deleteStudent}) {
     useEffect(() => {
         updatehistory();
-    },[student.studentId]);
+    },[]);
 
     const onClickAssign = async(schoolId,transactionId,bookId) => {
         await assignSubmit(schoolId,transactionId,bookId);
@@ -23,7 +23,10 @@ function Profile({setFind,student,setAssignWithId,assignSubmit}) {
             })
         );
     }
-    
+
+    const onDelete = () => {
+        deleteStudent(student.studentid);
+    }
 
     const getSearch = () => {
         setFind({
@@ -136,7 +139,7 @@ function Profile({setFind,student,setAssignWithId,assignSubmit}) {
 
             <div className="profileBtnSection">
                 <div className="btn" onClick={()=>setAssignWithId(student.studentid)}>Assign a Book</div>
-                <div className="btn white">Delete Profile</div>
+                <div className="btn white" onClick={()=>onDelete()} >Delete Profile</div>
             </div>
 
         </div>

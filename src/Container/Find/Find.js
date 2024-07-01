@@ -2,7 +2,7 @@ import {useState,useEffect} from "react";
 import Search from "../Search/Search";
 import Profile from "../Profile/Profile";
 
-function Find({schoolId,setAssignWithId,assignSubmit}) {
+function Find({schoolId,setAssignWithId,assignSubmit,updateStudent}) {
 
     const [filter,setFilter] = useState("student");
     const [search,setSearch] = useState("");
@@ -17,6 +17,25 @@ function Find({schoolId,setAssignWithId,assignSubmit}) {
         getStudents();
         getBooks();
     },[]);
+    
+    const deleteStudent = (studentId) => {
+        fetch(`http://localhost:3000/student/delete?schoolId=${schoolId}&studentId=${studentId}`,{
+            method: 'DELETE',
+        }).then(response => response.json())
+        .then(res => {
+            if(res.status){
+                alert(res.message);
+                updateStudent();
+                getStudents();
+                setFind({
+                    route : "search",
+                    index : ""
+                });
+            } else {
+                alert(res.message);
+            }
+        })
+    }
 
     const filterChange = (sort) => {
         setFilter(sort);
@@ -69,6 +88,7 @@ function Find({schoolId,setAssignWithId,assignSubmit}) {
                 student={students[find.index]} 
                 setAssignWithId={setAssignWithId}
                 assignSubmit={assignSubmit}
+                deleteStudent={deleteStudent}
             />    
     );
 }
