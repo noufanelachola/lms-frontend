@@ -5,7 +5,7 @@ import profileBook from "../resources/book-only.png";
 import { useEffect, useState } from "react";
 
 
-function Profile({item,setFind,profile,setAssignWithId,assignSubmit,deleteStudent}) {
+function Profile({url,item,setFind,profile,setAssignWithId,assignSubmit,deleteStudent,deleteBook}) {
     useEffect(() => {
         updatehistory();
     },[]);
@@ -26,7 +26,12 @@ function Profile({item,setFind,profile,setAssignWithId,assignSubmit,deleteStuden
     }
 
     const onDelete = () => {
-        deleteStudent(profile.studentid);
+        if(item === "student"){
+            deleteStudent(profile.studentid);
+        }
+        else if(item === "book"){
+            deleteBook(profile.bookid);
+        }
     }
 
     const getSearch = () => {
@@ -52,14 +57,14 @@ function Profile({item,setFind,profile,setAssignWithId,assignSubmit,deleteStuden
 
     const updatehistory = () => {
         if(item === "student"){
-            fetch(`http://localhost:3000/assign/get?schoolId=${profile.schoolid}&studentId=${profile.studentid}`)
+            fetch(`${url}/assign/get?schoolId=${profile.schoolid}&studentId=${profile.studentid}`)
             .then(res => res.json())
             .then(transaction => setHistory(transaction))
             .catch(error => {
             console.log("Error fetching student transaction")
             });
         } else if(item === "book") {
-            fetch(`http://localhost:3000/assign/get?schoolId=${profile.schoolid}&bookId=${profile.bookid}`)
+            fetch(`${url}/assign/get?schoolId=${profile.schoolid}&bookId=${profile.bookid}`)
             .then(res => res.json())
             .then(transaction => setHistory(transaction))
             .catch(error => {
@@ -108,12 +113,12 @@ function Profile({item,setFind,profile,setAssignWithId,assignSubmit,deleteStuden
 
             <div className="readStats">
                 <div>
-                    <p className="medText white">{item === "student" ? "Books Read" : "Taken"}</p>
-                    <p className="medText white">{item === "student" ? submittedBooksCount() : history.length}</p>
+                    <p className="medText white">{item === "student" ? "Books Read" : "Total Copies"}</p>
+                    <p className="medText white">{item === "student" ? submittedBooksCount() : profile.totalcopies}</p>
                 </div>
                 <div>
-                    <p className="medText white">To Return</p>
-                    <p className="medText white">{returnBooksCount()}</p>
+                    <p className="medText white">{item === "student" ? "To Return" : "Available Copies"}</p>
+                    <p className="medText white">{item === "student" ? returnBooksCount() : profile.availablecopies}</p>
                 </div>
             </div>
 
@@ -199,8 +204,20 @@ function Profile({item,setFind,profile,setAssignWithId,assignSubmit,deleteStuden
             </div>
 
             <div className="profileBtnSection">
-                <div className="btn" onClick={()=>setAssignWithId(profile.studentid)}>Assign a Book</div>
-                <div className="btn white" onClick={()=>onDelete()} >Delete Profile</div>
+                {
+                    item === "student" &&
+                    <>
+                        <div className="btn" onClick={()=>setAssignWithId(profile.studentid,"")}>Assign a Book</div>
+                        <div className="btn white" onClick={()=>onDelete()} >Delete Profile</div>
+                    </>
+                }
+                {
+                    item === "book" &&
+                    <>
+                        <div className="btn" onClick={()=>setAssignWithId("",profile.bookid)}>Assign To</div>
+                        <div className="btn white" onClick={()=>onDelete()} >Delete Book</div>
+                    </>
+                }
             </div>
 
         </div>

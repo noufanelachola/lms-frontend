@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Login.css";
 import logo1 from "../resources/logo1.png";
 
-function Login({routeChange,updateAccount}) {
+function Login({url,routeChange,updateAccount}) {
   
   const [user,setUser] = useState({
     userName:"",
@@ -25,7 +25,7 @@ function Login({routeChange,updateAccount}) {
 
   const OnLoginSubmit = () => {
 
-    fetch("http://localhost:3000/school/signin",{
+    fetch(`${url}/school/signin`,{
       method : 'post',
             headers : {"Content-Type" : 'application/json'},
             body : JSON.stringify({

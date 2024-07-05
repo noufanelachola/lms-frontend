@@ -2,7 +2,7 @@ import {useState,useEffect} from "react";
 import Search from "../Search/Search";
 import Profile from "../Profile/Profile";
 
-function Find({schoolId,setAssignWithId,assignSubmit,updateStudent}) {
+function Find({url,schoolId,setAssignWithId,assignSubmit,updateStudent,updateBook}) {
 
     const [filter,setFilter] = useState("student");
     const [search,setSearch] = useState("");
@@ -19,7 +19,7 @@ function Find({schoolId,setAssignWithId,assignSubmit,updateStudent}) {
     },[]);
     
     const deleteStudent = (studentId) => {
-        fetch(`http://localhost:3000/student/delete?schoolId=${schoolId}&studentId=${studentId}`,{
+        fetch(`${url}/student/delete?schoolId=${schoolId}&studentId=${studentId}`,{
             method: 'DELETE',
         }).then(response => response.json())
         .then(res => {
@@ -27,6 +27,25 @@ function Find({schoolId,setAssignWithId,assignSubmit,updateStudent}) {
                 alert(res.message);
                 updateStudent();
                 getStudents();
+                setFind({
+                    route : "search",
+                    index : ""
+                });
+            } else {
+                alert(res.message);
+            }
+        })
+    }
+
+    const deleteBook = (bookId) => {
+        fetch(`${url}/book/delete?schoolId=${schoolId}&bookId=${bookId}`,{
+            method: 'DELETE',
+        }).then(response => response.json())
+        .then(res => {
+            if(res.status){
+                alert(res.message);
+                updateBook();
+                getBooks();
                 setFind({
                     route : "search",
                     index : ""
@@ -53,7 +72,7 @@ function Find({schoolId,setAssignWithId,assignSubmit,updateStudent}) {
     }
 
     const getStudents = () => {
-        fetch(`http://localhost:3000/student/get?schoolId=${schoolId}&search=${search}`)
+        fetch(`${url}/student/get?schoolId=${schoolId}&search=${search}`)
         .then(response => response.json())
         .then(students => {
             setStudents(students);
@@ -62,7 +81,7 @@ function Find({schoolId,setAssignWithId,assignSubmit,updateStudent}) {
     }
 
     const getBooks = () => {
-        fetch(`http://localhost:3000/book/get?schoolId=${schoolId}&search=${search}`)
+        fetch(`${url}/book/get?schoolId=${schoolId}&search=${search}`)
         .then(response => response.json())
         .then(books => {
             setBooks(books);
@@ -86,21 +105,25 @@ function Find({schoolId,setAssignWithId,assignSubmit,updateStudent}) {
         :   
             filter === "student" ?
                 <Profile 
+                    url={url}
                     item={"student"}
                     setFind={setFind} 
                     profile={students[find.index]} 
                     setAssignWithId={setAssignWithId}
                     assignSubmit={assignSubmit}
                     deleteStudent={deleteStudent}
+                    deleteBook={deleteBook}
                 />  
-                :
+            :
                 <Profile 
+                    url={url}
                     item={"book"}
                     setFind={setFind} 
                     profile={books[find.index]} 
                     setAssignWithId={setAssignWithId}
                     assignSubmit={assignSubmit}
                     deleteStudent={deleteStudent}
+                    deleteBook={deleteBook}
                 />              
     );
 }

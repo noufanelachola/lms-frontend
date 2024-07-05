@@ -14,6 +14,9 @@ import Profile from "./Container/Profile/Profile";
 import './App.css';
 
 function App() {
+
+  let url = "http://192.168.29.136:3000";
+
   const [route,setRoute] = useState("logIn");
   const [account,setAccount] = useState(
     {
@@ -41,11 +44,11 @@ function App() {
     setRoute(rout);
   }
 
-  const setAssignWithId = (id) => {
+  const setAssignWithId = (studentId="",bookId="") => {
     routeChange("assignBook");
     setAssign({
-      studentId : id,
-      bookId : ""
+      studentId : studentId,
+      bookId : bookId
     })
   }
 
@@ -88,7 +91,7 @@ function App() {
   },[account.schoolId]);
 
   const updateStudentsCount = () => {
-    fetch(`http://localhost:3000/student/count?schoolId=${account.schoolId}`)
+    fetch(`${url}/student/count?schoolId=${account.schoolId}`)
     .then(res => res.json())
     .then(count => {
       setAccount(prevState => ({
@@ -100,7 +103,7 @@ function App() {
   }
 
   const updateStudentWithBooks = () => {
-    fetch(`http://localhost:3000/student/withbookscount?schoolId=${account.schoolId}`)
+    fetch(`${url}/student/withbookscount?schoolId=${account.schoolId}`)
     .then(response => response.json())
     .then(count => {
       setAccount(prevState => ({
@@ -124,7 +127,7 @@ function App() {
   }
 
   const updateBookTotalCount = () => {
-    fetch(`http://localhost:3000/book/totalcount?schoolId=${account.schoolId}`)
+    fetch(`${url}/book/totalcount?schoolId=${account.schoolId}`)
     .then(res => res.json())
     .then(count => {
       setAccount(prevState => ({
@@ -135,7 +138,7 @@ function App() {
   }
   
   const updateBookStockCount = () => {
-    fetch(`http://localhost:3000/book/stockcount?schoolId=${account.schoolId}`)
+    fetch(`${url}/book/stockcount?schoolId=${account.schoolId}`)
     .then(res => res.json())
     .then(count => {
       setAccount(prevState => ({
@@ -147,7 +150,7 @@ function App() {
 
   const updateAssignStudent = () => {
     if(account.schoolId){
-      fetch(`http://localhost:3000/assign/get?schoolId=${account.schoolId}&status=pending`)
+      fetch(`${url}/assign/get?schoolId=${account.schoolId}&status=pending`)
     .then(response => response.json())
     .then(transaction => {
       if(transaction.length){
@@ -168,7 +171,7 @@ function App() {
   }
 
   const assignSubmit = (id,transactionId,bookId) => {
-    fetch(`http://localhost:3000/assign/submit?schoolId=${account.schoolId}&transactionId=${transactionId}&bookId=${bookId}`,{
+    fetch(`${url}/assign/submit?schoolId=${account.schoolId}&transactionId=${transactionId}&bookId=${bookId}`,{
       method : "put",
       headers : {"Content-Type" : 'application/json'}
     }).then((response) => response.json())
@@ -194,15 +197,15 @@ function App() {
     <div className="App">
       {
         route === "logIn" ? 
-        <Login routeChange={routeChange} updateAccount={updateAccount} /> :
+        <Login url={url} routeChange={routeChange} updateAccount={updateAccount} /> :
         <div className="appDashBoard">
             <DashBoard route={route} routeChange={routeChange} signOut={signOut} />
-            {route === "home" && <Home account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} withBooks={account.withBooks} assignStudents={assignStudents} assignSubmit={assignSubmit} />}
-            {route === "search" && <Find schoolId={account.schoolId} routeChange={routeChange} setAssignWithId={setAssignWithId} assignSubmit={assignSubmit} updateStudent={updateStudent} />}
-            {route === "addStudent" && <AddStudent schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
-            {route === "addBook" && <AddBook schoolId={account.schoolId} totalBooks={account.totalBooks} updateBooksCount={updateBooksCount} />}
-            {route === "assignBook" && <AssignBook updateBookStockCount={updateBookStockCount} updateStudentWithBooks={updateStudentWithBooks} schoolId={account.schoolId} assign={assign} setAssign={setAssign} />}
-            {route === "profile" && <Profile routeChange={routeChange} />}
+            {route === "home" && <Home url={url} account={account} totalStudents={account.totalStudents} totalBooks={account.totalBooks} stockBooks={account.stockBooks} withBooks={account.withBooks} assignStudents={assignStudents} assignSubmit={assignSubmit} />}
+            {route === "search" && <Find url={url} schoolId={account.schoolId} routeChange={routeChange} setAssignWithId={setAssignWithId} assignSubmit={assignSubmit} updateStudent={updateStudent} updateBook={updateBooksCount} />}
+            {route === "addStudent" && <AddStudent url={url} schoolId={account.schoolId} totalStudents={account.totalStudents} updateStudentsCount={updateStudentsCount} />}
+            {route === "addBook" && <AddBook url={url} schoolId={account.schoolId} totalBooks={account.totalBooks} updateBooksCount={updateBooksCount} />}
+            {route === "assignBook" && <AssignBook url={url} updateBookStockCount={updateBookStockCount} updateStudentWithBooks={updateStudentWithBooks} schoolId={account.schoolId} assign={assign} setAssign={setAssign} />}
+            {route === "profile" && <Profile url={url} routeChange={routeChange} />}
           </div> 
       }
 

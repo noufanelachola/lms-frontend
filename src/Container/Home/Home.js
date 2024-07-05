@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 
-function Home({account,totalStudents,totalBooks,stockBooks,withBooks,assignStudents,assignSubmit}) {
+function Home({url,account,totalStudents,totalBooks,stockBooks,withBooks,assignStudents,assignSubmit}) {
 
     return (
         <div className="window home">

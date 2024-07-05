@@ -98,7 +98,6 @@
     align-items: center;
     border: black 0.1rem solid;
     border-radius: 1rem;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
 }
 .searchItem > img {
     width: 100%;
