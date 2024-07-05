@@ -28,7 +28,7 @@ function Home({account,totalStudents,totalBooks,stockBooks,withBooks,assignStude
             <div className="homeCont2 homeCont">
                 <div className="homeTableHeader">
                     <p className="medium subTitle smallLineHeight">To Return</p>
-                    <p><span className="strong green smallLineHeight">{assignStudents.length}</span>{` Student${assignStudents.length > 1 ? "s have" : " has"} taken books...`}</p>
+                    <p><span className="strong green smallLineHeight">{assignStudents.length}</span>{`${assignStudents.length > 1 ? " books" : " book"} to return`}</p>
                 </div>
                 <div className="homeTableCont">
                     <table className="returnTable">
