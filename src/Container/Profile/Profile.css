@@ -26,14 +26,18 @@
 }
 
 .profile .profileHead .profileSection .profileImg {
-    border: 0.5rem solid var(--clr-primary-blue-dark);
-    border-radius: 100rem;
     overflow: hidden;
-    height: 15rem;
-    width: 15rem;
-    background-color: white;
+    height: 18rem;
     flex-shrink: 0;
 }
+
+.profile .profileHead .profileSection .profileImg.studentImage{
+    border: 0.5rem solid var(--clr-primary-blue-dark);
+    border-radius: 100rem;
+    width: 18rem;
+    background-color: white;
+} 
+
 .profile .profileHead .profileSection .profileImg img{
     /* width: 100%; */
     height: 100%;
@@ -102,6 +106,7 @@
     flex-direction: column;
     gap: 0.5rem;
     align-items: center;
+    min-width: 10rem;
 }
 
 

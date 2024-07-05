@@ -46,23 +46,21 @@ function Search({students,books,filter,filterChange,search,keyPress,onSearchInpu
                     return(
                         <ProfileCard 
                             index={index}
-                            filter={filter} 
                             key={student.studentid} 
                             student={student}
                             setFind={setFind}
-                        />
-                    )
-                })}    
+                            />
+                        )
+                    })}    
 
-                {filter === "book" && books.map(book => {
+                {filter === "book" && books.map((book,index) => {
                     return(
                         <BookCard 
+                            index={index}
+                            setFind={setFind}
                             key={book.bookid} 
                             id={book.bookid} 
-                            bookId={book.bookid}
-                            bookName={book.bookname}
-                            bookAuthor={book.bookauthor}
-                            takenStudents={book.taken}
+                            book={book}
                         />
                     )
                 })}    

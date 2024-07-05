@@ -39,6 +39,7 @@ function Find({schoolId,setAssignWithId,assignSubmit,updateStudent}) {
 
     const filterChange = (sort) => {
         setFilter(sort);
+        console.log(filter);
     }
 
     const onSearchInputChange = (event) => {
@@ -83,13 +84,24 @@ function Find({schoolId,setAssignWithId,assignSubmit,updateStudent}) {
                 setFind={setFind}
             />
         :   
-            <Profile 
-                setFind={setFind} 
-                student={students[find.index]} 
-                setAssignWithId={setAssignWithId}
-                assignSubmit={assignSubmit}
-                deleteStudent={deleteStudent}
-            />    
+            filter === "student" ?
+                <Profile 
+                    item={"student"}
+                    setFind={setFind} 
+                    profile={students[find.index]} 
+                    setAssignWithId={setAssignWithId}
+                    assignSubmit={assignSubmit}
+                    deleteStudent={deleteStudent}
+                />  
+                :
+                <Profile 
+                    item={"book"}
+                    setFind={setFind} 
+                    profile={books[find.index]} 
+                    setAssignWithId={setAssignWithId}
+                    assignSubmit={assignSubmit}
+                    deleteStudent={deleteStudent}
+                />              
     );
 }
 
