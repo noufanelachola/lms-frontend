@@ -40,6 +40,7 @@ function Login({url,routeChange,updateAccount}) {
           ...prevState,
           password: ""
         }));
+        console.log(res);
         routeChange("home");
       }
     }).catch(error => console.error("Error: ",error));

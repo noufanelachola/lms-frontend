@@ -75,7 +75,7 @@ function Home({url,account,totalStudents,totalBooks,stockBooks,withBooks,assignS
             <div className="homeCont3 homeCont">
                 <div className="homeTableHeader">
                     <p className="medium subTitle smallLineHeight">Your Plan</p>
-                    <p><span className="strong green smallLineHeight">{account.doe}</span> Students have taken books...</p>
+                    <p><span className="strong green smallLineHeight">{account.date_left}</span>{` Day${account.date_left > 0 ? "s" : ""} left`}</p>
                 </div>
                 <div className="homeTableCont">  
                     <table className="returnTable">

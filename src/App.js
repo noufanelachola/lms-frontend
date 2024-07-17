@@ -28,7 +28,8 @@ function App() {
       totalBooks : 0,
       stockBooks : 0,
       totalStudents : 0,
-      withBooks : 0
+      withBooks : 0,
+      date_left: 0
     }
   );
   const [assignStudents,setAssignStudents] = useState([]);
@@ -60,7 +61,8 @@ function App() {
       dop : school.start_date,
       doe : school.end_date,
       status : school.is_active ? "Active" : "Not Active",
-      schoolId : school.id
+      schoolId : school.id,
+      date_left : school.date_left
     })); 
   }
 
