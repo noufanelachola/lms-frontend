@@ -55,6 +55,7 @@ function App() {
 
 
   const updateAccount = (school) => {
+    console.log("school",school);
     setAccount(prevState => ({
       ...prevState,
       schoolName : school.school_name,
@@ -62,7 +63,7 @@ function App() {
       doe : school.end_date,
       status : school.is_active ? "Active" : "Not Active",
       schoolId : school.id,
-      date_left : school.date_left
+      date_left : school.days_left
     })); 
   }
 
