@@ -1,7 +1,7 @@
 import {React,useState} from "react";
 import "./AddBook.css";
 
-function AddBook({schoolId,totalBooks,updateBooksCount}) {
+function AddBook({url,schoolId,totalBooks,updateBooksCount}) {
 
     const [book,setBook] = useState({
         bookName : "",
@@ -27,7 +27,7 @@ function AddBook({schoolId,totalBooks,updateBooksCount}) {
 
     const bookSubmit = () => {
         if(book.bookName && book.bookAuthor && book.totalCopies) {
-            fetch("http://localhost:3000/book/add",{
+            fetch(`${url}/book/add`,{
                 method : "post",
                 headers : {"Content-Type" : "application/json"},
                 body : JSON.stringify({

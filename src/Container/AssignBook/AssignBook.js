@@ -1,7 +1,7 @@
 import {React,useState} from "react";
 import "./AssignBook.css";
 
-function AssignBook({schoolId,updateBookStockCount,updateStudentWithBooks,assign,setAssign}) {
+function AssignBook({url,schoolId,updateBookStockCount,updateStudentWithBooks,assign,setAssign}) {
 
     // const [assign,setAssign] = useState({
     //     studentId : "",
@@ -24,7 +24,7 @@ function AssignBook({schoolId,updateBookStockCount,updateStudentWithBooks,assign
 
     const onSubmit = () => {
         if(assign.studentId && assign.bookId){
-            fetch("http://localhost:3000/assign",{
+            fetch(`${url}/assign`,{
                 method : "post",
                 headers : {"Content-Type" : "application/json"},
                 body : JSON.stringify({

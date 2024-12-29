@@ -15,7 +15,7 @@ import './App.css';
 
 function App() {
 
-  let url = "http://192.168.29.136:3000";
+  let url = "http://13.60.14.116:3000";
 
   const [route,setRoute] = useState("logIn");
   const [account,setAccount] = useState(
