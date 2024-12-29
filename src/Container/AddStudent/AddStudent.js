@@ -1,7 +1,7 @@
 import {React,useState} from "react";
 import "./AddStudent.css";
 
-function AddStudent ({schoolId,totalStudents,updateStudentsCount}) {
+function AddStudent ({url,schoolId,totalStudents,updateStudentsCount}) {
 
     const [student,setStudent] = useState({
         name : "",
@@ -28,7 +28,7 @@ function AddStudent ({schoolId,totalStudents,updateStudentsCount}) {
 
     const studentSubmit = () => {
         if(student.name && student.class && student.admissionNumber) {
-            fetch("http://localhost:3000/student/add",{
+            fetch(`${url}/student/add`,{
                 method : 'post',
                       headers : {"Content-Type" : 'application/json'},
                       body : JSON.stringify({
